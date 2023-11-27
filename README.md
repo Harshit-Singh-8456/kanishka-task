@@ -2,11 +2,17 @@
 
 ## Technologies
 - Angular
-- Angular Material (UI Designs)
+- Bootstrap (UI Designs)
 - Node js , MongoDB and Express js
+
+**IMP Note:** After cloning from GitHub, navigate to the respective directories (`frontend` and `backend`) and run `npm install` to install dependencies.
+
+
+**Note:** Start The Backend Server First with for Development OR Local cmd : "node run dev" OR "npx nodemon server.js".
 
 ## Frontend Run Command
 - Navigate to the frontend directory: `cd frontend`
+- Navigate to the frontend directory: `cd crud-task`
 - Run the Angular development server: `ng serve`
 
 ## Backend Run Commands
