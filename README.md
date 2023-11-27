@@ -20,4 +20,4 @@
 - Node version: v18.12.1
 - Angular version: 16.0.0
 
-**Note:** Do not copy code from external sources.
+**Note:** Do not copy code It's for personal use.
