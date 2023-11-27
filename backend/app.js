@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("express-async-errors");
+const cors = require("cors");
 const express = require("express");
 const app = express();
 // error handlers
@@ -10,6 +11,7 @@ const jobsRouter = require('./routes/jobs');
 
 console.log('app starting');
 app.use(express.json());
+app.use(cors());
 
 // routes
 app.use("/api/v1/jobs", jobsRouter);

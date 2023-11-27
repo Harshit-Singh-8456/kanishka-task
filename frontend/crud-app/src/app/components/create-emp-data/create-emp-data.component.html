@@ -1,0 +1,58 @@
+<!-- Your HTML template -->
+<h1>Create Employee List</h1>
+<form [formGroup]="employeeForm" (ngSubmit)="saveData()" style="margin-top: 7rem;">
+  <div class="desc-grid">
+    <label class="grid-input">
+      <input type="text" id="firstName" formControlName="firstName" class="firstName descInput" placeholder="First Name"
+        required>
+      <div class="count" data-type="firstName"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="text" id="lastName" formControlName="lastName" class="lastName descInput" placeholder="Last Name">
+      <div class="count" data-type="lastName"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="email" id="email" formControlName="email" class="email descInput" placeholder="Email Id">
+      <div class="count" data-type="email"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="date" id="dob" formControlName="dob" class="dob descInput" placeholder="Date of Birth">
+      <div class="count" data-type="dob"></div>
+    </label>
+
+
+    <label class="grid-input">
+      <input type="text" id="gender" formControlName="gender" class="gender descInput" placeholder="Gender">
+      <div class="count" data-type="gender"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="text" id="education" formControlName="education" class="education descInput" placeholder="Education">
+      <div class="count" data-type="education"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="text" id="company" formControlName="company" class="company descInput" placeholder="Company">
+      <div class="count" data-type="company"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="number" id="experience" formControlName="experience" class="experience descInput"
+        placeholder="Experience">
+      <div class="count" data-type="experience"></div>
+    </label>
+
+    <label class="grid-input">
+      <input type="number" id="package" formControlName="package" class="package descInput" placeholder="Package">
+      <div class="count" data-type="package"></div>
+    </label>
+  </div>
+  <div class="btn-container">
+    <button (click)="updateData($event)" class="submit-btn btn" type="submit">{{ route.snapshot.queryParams['ID'] ?
+      'Update' : 'Create' }}</button>
+  </div>
+</form>
+<div class="msg-log">{{ saveMessage }}</div>

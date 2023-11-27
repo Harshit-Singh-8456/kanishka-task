@@ -1,0 +1,244 @@
+/* -- GENERAL RESETS -- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* -- GLOBAL STYLES -- */
+
+:root {
+  --border-radius: .5em;
+  --focus-color: rgba(100, 100, 255, 0.4);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.btn {
+  color: rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  line-height: 1em;
+  font-size: 1em;
+  cursor: pointer;
+  outline: none !important;
+  border: 2px transparent;
+  border-radius: var(--border-radius);
+
+  &:hover {
+    color: rgb(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* -- INPUT ALERT STYLING -- */
+
+.alert {
+  color: rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, .1);
+  box-shadow: 0 0 6px rgb(255, 0, 0);
+}
+
+/* -- MAIN CONTAINER -- */
+
+form {
+  width: min(100%, 900px);
+  margin: auto;
+  padding: 0 1em;
+  user-select: none;
+  z-index: 3;
+
+  & input,
+  & textarea {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    outline: none !important;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    padding: 1em 3.5em 1em 1em;
+    line-height: 1em;
+    font-size: 1em;
+    height: 100%;
+
+    &:focus {
+      border-color: var(--focus-color);
+    }
+
+    /* Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+}
+
+/* -- YEAR INPUT -- */
+
+.data-input-container {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & .search-container {
+    display: flex;
+    height: 100%;
+
+    & .search-box {
+      position: relative;
+
+      & .search-btn {
+        color: rgba(0, 0, 0, 0.4);
+        background-color: #ffffff;
+        border: 0px solid transparent;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 83%;
+        display: flex;
+        translate: 0 -50%;
+        padding: 1em;
+        border-radius: var(--border-radius);
+
+        &:hover {
+          background-color: rgba(150, 150, 150, 0.1);
+        }
+      }
+    }
+
+    & .clear-btn {
+      padding: 0 2em;
+      margin-left: 1em;
+    }
+  }
+}
+
+/* -- IMAGE UPLOAD INPUT -- */
+
+.drop-area {
+  /* label container for img when selected and input */
+  background-color: rgba(100, 100, 255, 0.1);
+  display: block;
+  height: 10em;
+  margin: 1em 0;
+  border: 2px solid var(--focus-color);
+  border-radius: var(--border-radius);
+  border-style: dashed;
+  position: relative;
+  cursor: pointer;
+
+  & .drop-help {
+    /* span with border and text indicatng the drop area */
+    position: absolute;
+    inset: 50% 0 0 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  & .drop-help-text1 {
+    /* drop area text */
+    flex-wrap: wrap;
+  }
+
+  & .underline-hover {
+    /* drop area blue text */
+    color: rgb(100, 100, 255);
+    cursor: pointer;
+  }
+
+  & .underline-hover:hover {
+    text-decoration: underline;
+  }
+
+  & .drop-help-icon {
+    /* cloud upload icon */
+    font-size: 1.5em;
+    margin-top: 10px;
+  }
+
+  & .img-input {
+    /* not necessary to see input */
+    display: none;
+  }
+}
+
+/* -- DESCRIPTION INPUTS GRID -- */
+
+.desc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+
+  & .grid-input {
+    position: relative;
+
+    & .count {
+      color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      right: 4%;
+      top: 50%;
+      translate: 0 -50%;
+    }
+
+    & input {
+      width: 100%;
+    }
+
+    & textarea {
+      width: 100%;
+      padding-right: 4em;
+      resize: none;
+      line-height: 1em;
+      font-family: sans-serif;
+
+      &::-webkit-scrollbar {
+        width: .5em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 1em;
+      }
+    }
+  }
+}
+
+/* -- SUBMIT BUTTON -- */
+
+.btn-container {
+  height: 3em;
+  margin-top: 1em;
+
+  .submit-btn {
+    display: block;
+    height: 100%;
+    padding: 0 3em;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.4em;
+  color: black;
+  margin-top: 2rem;
+}

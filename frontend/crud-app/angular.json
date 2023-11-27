@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crud-task": {
+    "crud-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/crud-task",
+            "outputPath": "dist/crud-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "crud-task:build:production"
+              "browserTarget": "crud-app:build:production"
             },
             "development": {
-              "browserTarget": "crud-task:build:development"
+              "browserTarget": "crud-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "crud-task:build"
+            "browserTarget": "crud-app:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "e85657f5-73d2-4051-91bb-d4e53785b4d0"
+    "analytics": "70c6a73d-7c36-453a-9fb0-0042bc926bbc"
   }
 }

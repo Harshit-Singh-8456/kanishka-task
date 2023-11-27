@@ -21,7 +21,6 @@ const employeeSchema = new mongoose.Schema(
         },
         gender: {
             type: String,
-            enum: ["Male", "Female", "Others"],
             required: true,
         },
         education: {
@@ -35,7 +34,6 @@ const employeeSchema = new mongoose.Schema(
         experience: {
             type: Number,
             required: true,
-            max: 10
         },
         package: {
             type: Number,
