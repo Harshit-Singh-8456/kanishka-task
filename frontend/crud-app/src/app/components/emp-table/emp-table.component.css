@@ -126,31 +126,18 @@ h1 {
 
 .container {
   display: block;
-  text-align: center;
+  margin-top: 4rem;
+}
+
+.pagination {
+  justify-content: end;
+  margin-top: 2rem;
+  padding: 1rem;
 }
 
 h3 {
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  font-size: 1.5em;
-  color: #cecece;
-}
-
-h3:before {
-  content: "\25C0";
-  position: absolute;
-  left: -50px;
-  -webkit-animation: leftRight 2s linear infinite;
-  animation: leftRight 2s linear infinite;
-}
-
-h3:after {
-  content: "\25b6";
-  position: absolute;
-  right: -50px;
-  -webkit-animation: leftRight 2s linear infinite reverse;
-  animation: leftRight 2s linear infinite reverse;
+  color: black;
+  padding: 1rem;
 }
 
 @-webkit-keyframes leftRight {
@@ -222,8 +209,31 @@ h3:after {
 }
 
 .search-input {
-  margin-left: 55rem;
   padding: 6px;
-  width: 12rem;
+  width: 13rem;
   border-radius: 7px;
+  height: 2.5rem;
+  margin-top: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position: -200% 0;
+  }
+}
+.click-event {
+  cursor: pointer;
 }

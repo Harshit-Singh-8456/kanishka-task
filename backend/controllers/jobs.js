@@ -2,9 +2,43 @@ const Job = require("../models/jobs");
 const { BadRequestError, NotFoundError } = require("../errors");
 
 const getAllJobs = async (req, res) => {
-    const job = await Job.find({}).sort("createdAt");
-    res.status(200).json({ status: true, data: job, count: job.length });
+    try {
+        const { search, page, limit } = req.query;
+        const queryObject = {};
+
+        if (search) {
+            const searchRegex = { $regex: search, $options: 'i' };
+
+            // Build the queryObject with regex conditions for multiple fields
+            queryObject.$or = [
+                { firstName: searchRegex },
+                { lastName: searchRegex },
+                { email: searchRegex }
+                // Add more fields as needed
+            ];
+        }
+
+        // Count total documents in the collection based on the query
+        const totalCount = await Job.countDocuments(queryObject);
+
+        // Fetch paginated data
+        const jobs = await Job.find(queryObject)
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit));
+
+        if (jobs.length === 0) {
+            return res.status(404).json({ status: false, message: "No data found" });
+        }
+
+        res.status(200).json({ status: true, data: jobs, count: totalCount });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ status: false, message: "Internal Server Error" });
+    }
 };
+
+
+
 
 const getJob = async (req, res) => {
     const { id } = req.params;

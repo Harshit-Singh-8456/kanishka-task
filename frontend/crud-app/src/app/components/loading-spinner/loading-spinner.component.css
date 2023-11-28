@@ -1,0 +1,35 @@
+#spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Adjust as needed */
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: #3498db;
+  border-radius: 50%;
+  transition: transform 0.5s ease-in-out;
+  margin: 0 5px;
+  /* Adjust the margin to add space between balls */
+}
+
+#ball1 {
+  animation: bounce 0.5s infinite alternate 0.1s;
+}
+
+#ball2 {
+  animation: bounce 0.5s infinite alternate 0.2s;
+}
+
+#ball3 {
+  animation: bounce 0.5s infinite alternate 0.3s;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-20px);
+  }
+}

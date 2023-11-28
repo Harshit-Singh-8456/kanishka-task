@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* Add this to styles.css or styles.scss */
+@import "~ngx-toastr/toastr";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+.NoFound {
+  margin-left: 5rem;
+}

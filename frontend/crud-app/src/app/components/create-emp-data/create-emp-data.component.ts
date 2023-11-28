@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmpApiService } from 'src/app/services/emp-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-emp-data',
@@ -25,7 +26,8 @@ export class CreateEmpDataComponent implements OnInit {
   saveMessage: string = '';
   idFromQuery: any;
 
-  constructor(private fb: FormBuilder, private api: EmpApiService, public route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private api: EmpApiService, public route: ActivatedRoute,
+    private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -47,9 +49,11 @@ export class CreateEmpDataComponent implements OnInit {
           console.log(res);
         });
         this.employeeForm.reset();
-        this.saveMessage = 'Data saved successfully.';
+        this.toastr.success('Data Updated successfully');
+        this.router.navigate(['/']);
+
       } else {
-        this.saveMessage = 'Please fill in all required fields.';
+        this.toastr.error('Please fill in all required fields');
       }
     }
     else {
@@ -58,22 +62,14 @@ export class CreateEmpDataComponent implements OnInit {
           console.log(res);
         });
         this.employeeForm.reset();
-        this.saveMessage = 'Data saved successfully.';
+        this.toastr.success('Data saved successfully');
       } else {
-        this.saveMessage = 'Please fill in all required fields.';
+        this.toastr.error('Please fill in all required fields');
       }
     }
   }
 
   saveData() {
-    if (this.employeeForm.valid) {
-      this.api.createJob(this.employeeForm.value).subscribe((res) => {
-        console.log(res);
-      });
-      this.employeeForm.reset();
-      this.saveMessage = 'Data saved successfully.';
-    } else {
-      this.saveMessage = 'Please fill in all required fields.';
-    }
+
   }
 }
