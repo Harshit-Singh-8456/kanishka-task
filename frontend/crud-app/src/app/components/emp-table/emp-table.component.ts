@@ -15,8 +15,9 @@ export class EmpTableComponent implements OnInit {
   private searchSubject = new Subject<string>();
   loading: boolean = false;
   currentPage = 1;
-  private readonly pageSize = 5;
+  private readonly pageSize = 10;
   count: number = 0; // Initialize count with 0
+  startIndex = 0;
 
   constructor(private api: EmpApiService, private toastr: ToastrService) { }
 
@@ -55,6 +56,7 @@ export class EmpTableComponent implements OnInit {
         this.allEmpData = response ? response.data : null;
         this.count = response ? response.count : 0;
         this.loading = false;
+        this.startIndex = (this.currentPage - 1) * this.pageSize;
       },
       (error) => {
         console.error('Error loading data', error);

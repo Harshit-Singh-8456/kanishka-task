@@ -21,8 +21,9 @@ const getAllJobs = async (req, res) => {
         // Count total documents in the collection based on the query
         const totalCount = await Job.countDocuments(queryObject);
 
-        // Fetch paginated data
+        // Fetch paginated data with the latest timestamps coming first
         const jobs = await Job.find(queryObject)
+            .sort({ createdAt: -1 }) // Sort by the latest timestamps first
             .skip((page - 1) * limit)
             .limit(parseInt(limit));
 
@@ -36,9 +37,6 @@ const getAllJobs = async (req, res) => {
         res.status(500).json({ status: false, message: "Internal Server Error" });
     }
 };
-
-
-
 
 const getJob = async (req, res) => {
     const { id } = req.params;
