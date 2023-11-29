@@ -56,7 +56,7 @@ export class EmpTableComponent implements OnInit {
         this.allEmpData = response ? response.data : null;
         this.count = response ? response.count : 0;
         this.loading = false;
-        this.startIndex = (this.currentPage - 1) * this.pageSize;
+        this.startIndex = (this.currentPage - 1) * this.pageSize + 1;
       },
       (error) => {
         console.error('Error loading data', error);

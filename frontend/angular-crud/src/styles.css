@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* .mat-mdc-text-field-wrapper {
+  width: 29% !important;
+  height: 3rem !important;
+  border-radius: 0.5rem !important;
+} */
+
+/* .mat-mdc-form-field {
+  display: inline-flex;
+  flex-direction: row-reverse !important;
+} */
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+

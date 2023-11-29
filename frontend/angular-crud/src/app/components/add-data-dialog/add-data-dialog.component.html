@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>{{ data._id ? 'Update Data' : 'Add Data' }}</h1>
+<div mat-dialog-content style="width: 100%; max-width: 800px;">
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="First Name" [(ngModel)]="data.firstName" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Last Name" [(ngModel)]="data.lastName" />
+  </mat-form-field>
+
+<mat-form-field style="width: 100%; margin-bottom: 16px;">
+  <input matInput [matDatepicker]="dobPicker" placeholder="Date of Birth" [(ngModel)]="data.dob" />
+  <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+  <mat-datepicker #dobPicker></mat-datepicker>
+</mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <mat-label>Gender</mat-label>
+    <mat-select placeholder="Select Gender" [(ngModel)]="data.gender">
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+      <mat-option value="Other">Other</mat-option>
+      <!-- Add other options as needed -->
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Education" [(ngModel)]="data.education" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Company" [(ngModel)]="data.company" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Experience" [(ngModel)]="data.experience" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Package" [(ngModel)]="data.package" />
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%; margin-bottom: 16px;">
+    <input matInput placeholder="Email" [(ngModel)]="data.email" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSave()" cdkFocusInitial>
+    {{ data._id ? 'Update' : 'Create' }}
+  </button>
+</div>

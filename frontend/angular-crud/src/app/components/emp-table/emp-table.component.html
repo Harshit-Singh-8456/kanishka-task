@@ -1,0 +1,168 @@
+<!-- Include loading spinner component -->
+<div class="table-container">
+  <h2 class="cen-tittle">Employee Table</h2>
+  <div class="action-bar">
+    <!-- Add Data Button -->
+    <button mat-raised-button color="primary" (click)="openAddDataDialog()">
+      Add Data
+    </button>
+
+    <!-- Search Input -->
+    <mat-form-field class="search-field">
+      <input matInput placeholder="Search" (input)="search($event)" />
+    </mat-form-field>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-elevation-z8"
+    (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8"
+  >
+    <!-- sr no -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by first name"
+      >
+        First Name
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by last name"
+      >
+        Last Name
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <!-- Date of Birth Column -->
+    <ng-container matColumnDef="dob">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by date of birth"
+      >
+        Date of Birth
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.dob | date }}</td>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="gender">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by gender"
+      >
+        Gender
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+    </ng-container>
+
+    <!-- Education Column -->
+    <ng-container matColumnDef="education">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by education"
+      >
+        Education
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.education }}</td>
+    </ng-container>
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="company">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by company"
+      >
+        Company
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.company }}</td>
+    </ng-container>
+
+    <!-- Experience Column -->
+    <ng-container matColumnDef="experience">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by experience"
+      >
+        Experience
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.experience }}</td>
+    </ng-container>
+
+    <!-- Package Column -->
+    <ng-container matColumnDef="package">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by package"
+      >
+        Package
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.package | currencyFormat }}
+      </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by email"
+      >
+        Email
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="openAddDataDialog(element._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteData(element._id)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+<mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+</div>
