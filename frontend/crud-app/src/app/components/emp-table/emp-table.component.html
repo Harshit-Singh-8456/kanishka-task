@@ -66,13 +66,13 @@
   <!-- Pagination -->
   <nav aria-label="Page navigation example" *ngIf="!loading && count > 0">
     <ul class="pagination">
-      <li class="page-item" *ngIf="currentPage > 1">
+      <li class="page-item click-event">
         <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
       </li>
       <li class="page-item click-event" *ngFor="let page of getPages()">
         <a class="page-link" (click)="changePage(page)" [class.active]="currentPage === page">{{ page }}</a>
       </li>
-      <li class="page-item" *ngIf="currentPage < getTotalPages()">
+      <li class="page-item click-event">
         <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
       </li>
     </ul>

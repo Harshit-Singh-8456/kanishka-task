@@ -12,7 +12,7 @@
 
 ## Frontend Run Command
 - Navigate to the frontend directory: `cd frontend`
-- Navigate to the frontend directory: `cd crud-task`
+- Navigate to the frontend directory: `cd angular crud` or `cd crud-app`
 - Run the Angular development server: `ng serve`
 
 ## Backend Run Commands
