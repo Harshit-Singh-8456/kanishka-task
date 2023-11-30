@@ -39,6 +39,8 @@ th.mat-sort-header-sorted {
 
 .action-bar{
 .mat-mdc-text-field-wrapper {
-    width: 50% !important;
+    width: 35% !important;
+    height: 3rem;
+    border-radius: 0.5rem;
   }
 }

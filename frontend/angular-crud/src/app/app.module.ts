@@ -23,6 +23,9 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomDatePipe } from './pipes/date.pipe';
+
 
 
 
@@ -34,6 +37,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     LoadingSpinnerComponent,
     CurrencyFormatPipe,
     AddDataDialogComponent,
+    CustomDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatOptionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

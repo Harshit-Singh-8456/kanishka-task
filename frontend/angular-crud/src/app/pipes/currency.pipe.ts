@@ -15,16 +15,19 @@ export class CurrencyFormatPipe implements PipeTransform {
 
     // Define the formatting based on the value
     if (numericValue < 1000) {
-      return `₹ ${numericValue}`;
+      return `₹ ${numericValue.toFixed(2)}`;
     } else if (numericValue < 100000) {
       // Format in thousands
-      return `₹ ${(numericValue / 1000).toFixed(2)} Thousand`;
+      const formattedValue = (numericValue / 1000).toFixed(2);
+      return `₹ ${formattedValue.endsWith('.00') ? formattedValue.slice(0, -3) : formattedValue} Thousand`;
     } else if (numericValue < 10000000) {
       // Format in lakhs
-      return `₹ ${(numericValue / 100000).toFixed(2)} Lakh`;
+      const formattedValue = (numericValue / 100000).toFixed(2);
+      return `₹ ${formattedValue.endsWith('.00') ? formattedValue.slice(0, -3) : formattedValue} Lakh`;
     } else {
       // Format in crores
-      return `₹ ${(numericValue / 10000000).toFixed(2)} Crore`;
+      const formattedValue = (numericValue / 10000000).toFixed(2);
+      return `₹ ${formattedValue.endsWith('.00') ? formattedValue.slice(0, -3) : formattedValue} Crore`;
     }
   }
 }

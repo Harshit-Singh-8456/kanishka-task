@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -14,8 +14,6 @@ import { Subject, of } from 'rxjs';
 import { EmpApiService } from 'src/app/services/emp-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDataDialogComponent } from '../add-data-dialog/add-data-dialog.component';
-import { ChangeDetectionStrategy } from '@angular/core';
-
 
 export interface Job {
   firstName: string;
@@ -34,7 +32,7 @@ export interface Job {
   templateUrl: './emp-table.component.html',
   styleUrls: ['./emp-table.component.css'],
 })
-export class EmpTableComponent implements OnInit {
+export class EmpTableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'position',
     'firstName',
@@ -52,6 +50,8 @@ export class EmpTableComponent implements OnInit {
   private searchTerms = new Subject<string>();
   isLoading = false;
   isViewInit = false;
+  pageIndex: number = 0;
+  pageSize: number = 10;
 
   constructor(
     private liveAnnouncer: LiveAnnouncer,
@@ -64,7 +64,15 @@ export class EmpTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
-    // ngOnInit logic, if needed
+    // Fetch data from the API in ngOnInit
+    this.jobService.getAllJobs().subscribe(
+      (data) => {
+        this.dataSource.data = data.data;
+      },
+      (error) => {
+        console.error('Error fetching jobs:', error);
+      }
+    );
   }
 
   ngAfterViewInit() {
@@ -72,17 +80,10 @@ export class EmpTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
 
-    if (this.isViewInit) {
-      // Fetch data from the API only after the view is initialized
-      this.jobService.getAllJobs().subscribe(
-        (data) => {
-          this.dataSource.data = data.data;
-        },
-        (error) => {
-          console.error('Error fetching jobs:', error);
-        }
-      );
-    }
+    this.paginator.page.subscribe((event) => {
+      this.pageIndex = event.pageIndex;
+      this.pageSize = event.pageSize;
+    });
 
     // Set up the search observables
     this.searchTerms
@@ -127,7 +128,8 @@ export class EmpTableComponent implements OnInit {
       if (result) {
         // Do something with the result if needed
         console.log(result);
-        this.ngAfterViewInit(); // Call ngOnInit to refresh the data
+        this.ngAfterViewInit();
+        this.ngOnInit(); // Call ngOnInit to refresh the data
       }
     });
   }
